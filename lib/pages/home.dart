@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:matheus_blanco_online_cv/pages/containers/container1.dart';
 import 'package:matheus_blanco_online_cv/widgets/navbar.dart';
 
 import '../utils/constants.dart';
@@ -19,9 +20,10 @@ class _HomeState extends State<Home> {
     return Scaffold(
       body: SingleChildScrollView(
           child: Container(
-            child: Column(
+            child: const Column(
               children: [
-                Navbar()
+                Navbar(),
+                ContainerOne()
               ],
             ),
           )

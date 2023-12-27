@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:matheus_blanco_online_cv/utils/colors.dart';
+import 'package:matheus_blanco_online_cv/utils/constants.dart';
 import 'package:matheus_blanco_online_cv/utils/styles.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 
@@ -21,12 +22,12 @@ class _NavbarState extends State<Navbar> {
 
   Widget MobileNavbar(){
     return Container(
-      margin: EdgeInsets.symmetric(horizontal: 20),
+      margin: const EdgeInsets.symmetric(horizontal: 20),
       height: 70,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Icon(Icons.menu),
+          const Icon(Icons.menu),
           navLogo()
         ],
       ),
@@ -35,7 +36,7 @@ class _NavbarState extends State<Navbar> {
 
   Widget DesktopNavbar(){
     return Container(
-      margin: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+      margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
       height: 70,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -49,7 +50,7 @@ class _NavbarState extends State<Navbar> {
               navButton('Feedback'),
             ],
           ),
-          Container(
+          SizedBox(
             height: 45,
             child: ElevatedButton(
               style: borderedButtonStyle,
@@ -65,18 +66,18 @@ class _NavbarState extends State<Navbar> {
   Widget navLogo() {
     return Container(
       width: 110,
-      decoration: BoxDecoration(
-        image: DecorationImage(image: AssetImage('assets/images/logo.png'))
+      decoration: const BoxDecoration(
+        image: DecorationImage(image: AssetImage(logo))
       ),
     );
   }
 
   Widget navButton(String text) {
     return Container(
-      margin: EdgeInsets.symmetric(horizontal: 10),
+      margin: const EdgeInsets.symmetric(horizontal: 10),
       child: TextButton(
         onPressed: (){},
-        child: Text(text, style: TextStyle(
+        child: Text(text, style: const TextStyle(
           color: Colors.black,
           fontSize: 18
         ),
