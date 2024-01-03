@@ -15,12 +15,12 @@ class _ContainerOneState extends State<ContainerOne> {
   @override
   Widget build(BuildContext context) {
     return ScreenTypeLayout(
-      mobile: Mobile(),
-      desktop: Desktop(),
+      mobile: mobile(),
+      desktop: desktop(),
     );
   }
 
-  Widget Mobile() {
+  Widget mobile() {
     return Container(
       margin: EdgeInsets.symmetric(horizontal: w! / 10, vertical: 20),
       child: Column(
@@ -28,11 +28,11 @@ class _ContainerOneState extends State<ContainerOne> {
           Container(
             height: w! / 1.2,
             width: w! / 1.2,
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
                 image: DecorationImage(
                     image: AssetImage(illustration1), fit: BoxFit.contain)),
           ),
-          SizedBox(
+          const SizedBox(
             height: 20,
           ),
           Text(
@@ -41,7 +41,7 @@ class _ContainerOneState extends State<ContainerOne> {
             style: TextStyle(
                 fontSize: w! / 10, fontWeight: FontWeight.bold, height: 1),
           ),
-          SizedBox(
+          const SizedBox(
             height: 5,
           ),
           Text(
@@ -49,20 +49,20 @@ class _ContainerOneState extends State<ContainerOne> {
             textAlign: TextAlign.center,
             style: TextStyle(color: Colors.grey.shade600, fontSize: 16),
           ),
-          SizedBox(
+          const SizedBox(
             height: 30,
           ),
-          DemoContainer(),
-          SizedBox(
+          const DemoContainer(),
+          const SizedBox(
             height: 10,
           ),
-          BottomText()
+          const BottomText()
         ],
       ),
     );
   }
 
-  Widget Desktop() {
+  Widget desktop() {
     return Container(
       margin: EdgeInsets.symmetric(horizontal: w!/10, vertical: 20),
       child: Row(
@@ -93,7 +93,7 @@ class _ContainerOneState extends State<ContainerOne> {
                     const SizedBox(
                       height: 30,
                     ),
-                    Row(
+                    const Row(
                       children: [
                         DemoContainer(),
                         SizedBox(width: 20),
@@ -107,7 +107,7 @@ class _ContainerOneState extends State<ContainerOne> {
           Expanded(
             child: Container(
               height: 530,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 image: DecorationImage(
                     image: AssetImage(illustration1),
                     fit: BoxFit.contain,
@@ -142,7 +142,7 @@ class DemoContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return const SizedBox(
       height: 45,
       child: DemoButton(),
     );

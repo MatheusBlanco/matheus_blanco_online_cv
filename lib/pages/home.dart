@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:matheus_blanco_online_cv/pages/containers/container1.dart';
-import 'package:matheus_blanco_online_cv/widgets/navbar.dart';
+import 'package:matheus_blanco_online_cv/widgets/curriculum/curriculum.dart';
 
 import '../utils/constants.dart';
 
@@ -17,15 +16,13 @@ class _HomeState extends State<Home> {
     w = MediaQuery.of(context).size.width;
     h = MediaQuery.of(context).size.height;
 
-    return Scaffold(
+    return const Scaffold(
       body: SingleChildScrollView(
-          child: Container(
-            child: const Column(
-              children: [
-                Navbar(),
-                ContainerOne()
-              ],
-            ),
+          child: Column(
+            children: [
+             //  Navbar(),
+              CurriculumWidget()
+            ],
           )
       ),
     );
