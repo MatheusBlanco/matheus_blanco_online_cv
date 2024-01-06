@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:matheus_blanco_online_cv/widgets/curriculum/bookmark.dart';
+import 'package:matheus_blanco_online_cv/widgets/curriculum/information_fields/field_collection_left.dart';
 
 class CurriculumWidget extends StatefulWidget {
   const CurriculumWidget({super.key});
@@ -16,7 +17,9 @@ class _CurriculumWidgetState extends State<CurriculumWidget> {
       child: const Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          BookMark()
+          FieldCollectionLeft(),
+          BookMark(),
+          FieldCollectionLeft(),
         ],
       ),
     );
