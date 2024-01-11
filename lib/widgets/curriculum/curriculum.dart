@@ -41,6 +41,7 @@ class _CurriculumWidgetState extends State<CurriculumWidget> {
       margin: const EdgeInsets.symmetric(horizontal: 0, vertical: 100),
       child: const Row(
         mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           FieldCollectionLeft(),
           BookMark(),

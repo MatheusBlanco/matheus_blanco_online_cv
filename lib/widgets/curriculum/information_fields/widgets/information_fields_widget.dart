@@ -24,8 +24,13 @@ class InformationFieldStateWidget extends State<InformationFieldWidget> {
     var screenWidth = MediaQuery.of(context).size.width;
     var width = screenWidth < 700 ? screenWidth * 0.8 : screenWidth * 0.3;
 
-    return SizedBox(
-      width: width,
+    return ConstrainedBox(
+      constraints: BoxConstraints(
+        minHeight: 5.0,
+        minWidth: width,
+        maxHeight: 500,
+        maxWidth: width,
+      ),
       child: Column(
         children: [
           Container(
