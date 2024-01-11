@@ -23,14 +23,12 @@ class _ContactInfoState extends State<ContactInfo> {
     const email = 'msallesblanco@gmail.com';
 
     whatsapp() async {
-      var webUrl =
-          'https://web.whatsapp.com/send?phone=$phone&text=Boa tarde!&app_absent=0';
       var androidUrl = "whatsapp://send?phone=$phone&text=Boa tarde!";
       var iosUrl = "https://wa.me/$phone?text=${Uri.parse('Boa tarde!')}";
 
       try {
         if (kIsWeb) {
-          js.context.callMethod('open', [webUrl]);
+          await launchUrl(Uri.parse(androidUrl));
         } else {
           if (Platform.isIOS) {
             await launchUrl(Uri.parse(iosUrl));
