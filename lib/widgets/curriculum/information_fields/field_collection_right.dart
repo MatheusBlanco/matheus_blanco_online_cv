@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:matheus_blanco_online_cv/widgets/curriculum/information_fields/widgets/contact_info.dart';
 import 'package:matheus_blanco_online_cv/widgets/curriculum/information_fields/widgets/information_fields_widget.dart';
 
 class FieldCollectionRight extends StatefulWidget {
@@ -20,7 +21,11 @@ class _FieldCollectionRightState extends State<FieldCollectionRight> {
           children: [
             InformationFieldWidget(position: position, title: 'Experiência'),
             InformationFieldWidget(position: position, title: 'Educação'),
-            InformationFieldWidget(position: position, title: 'Contato'),
+            InformationFieldWidget(
+              position: position,
+              title: 'Contato',
+              child: ContactInfo(),
+            ),
           ],
         ),
       ),
