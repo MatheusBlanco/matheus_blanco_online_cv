@@ -13,15 +13,14 @@ class _FieldCollectionRightState extends State<FieldCollectionRight> {
   Widget build(BuildContext context) {
     const String position = 'right';
 
-    return SizedBox(
-      height: MediaQuery.of(context).size.height,
-      child: const Padding(
+    return const SizedBox(
+      child: Padding(
         padding: EdgeInsets.only(left: 40, right: 40),
         child: Column(
           children: [
-            InformationFieldWidget(position: position, title: 'Contato'),
             InformationFieldWidget(position: position, title: 'Experiência'),
             InformationFieldWidget(position: position, title: 'Educação'),
+            InformationFieldWidget(position: position, title: 'Contato'),
           ],
         ),
       ),

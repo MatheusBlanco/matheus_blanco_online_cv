@@ -6,8 +6,10 @@ class InformationFieldWidget extends StatefulWidget {
     super.key,
     required this.position,
     required this.title,
+    this.child = const Placeholder(),
   });
 
+  final Widget child;
   final String position;
   final String title;
 
@@ -23,7 +25,6 @@ class InformationFieldStateWidget extends State<InformationFieldWidget> {
     var width = screenWidth < 700 ? screenWidth * 0.8 : screenWidth * 0.3;
 
     return SizedBox(
-      height: MediaQuery.of(context).size.height * 0.33,
       width: width,
       child: Column(
         children: [
@@ -55,7 +56,8 @@ class InformationFieldStateWidget extends State<InformationFieldWidget> {
                       )
               ],
             ),
-          )
+          ),
+          widget.child,
         ],
       ),
     );
