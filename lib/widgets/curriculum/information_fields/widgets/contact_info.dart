@@ -21,6 +21,7 @@ class _ContactInfoState extends State<ContactInfo> {
   Widget build(BuildContext context) {
     var phone = "+55 (61) 98271-2626";
     const email = 'msallesblanco@gmail.com';
+    const git = 'github.com/MatheusBlanco';
 
     whatsapp() async {
       var androidUrl = "whatsapp://send?phone=$phone&text=Boa tarde!";
@@ -54,6 +55,12 @@ class _ContactInfoState extends State<ContactInfo> {
       }
     }
 
+    gitLaunch() async {
+      const link = 'https://$git';
+
+      js.context.callMethod('open', [link]);
+    }
+
     return Column(
       children: [
         const SizedBox(
@@ -75,6 +82,18 @@ class _ContactInfoState extends State<ContactInfo> {
           backgroundColor: Colors.blueAccent,
           foregroundColor: Colors.white,
           icon: const FaIcon(FontAwesomeIcons.google),
+        ),
+        const SizedBox(
+          height: 20,
+        ),
+        ContactWidget(
+          contact: git,
+          method: gitLaunch,
+          backgroundColor: Colors.black,
+          foregroundColor: Colors.white,
+          icon: const FaIcon(
+            FontAwesomeIcons.github,
+          ),
         )
       ],
     );
@@ -116,7 +135,7 @@ class ContactWidget extends StatelessWidget {
         Text(
           contact,
           style: const TextStyle(
-            fontSize: 24,
+            fontSize: 22,
             color: Colors.grey,
           ),
         )
