@@ -28,7 +28,7 @@ class InformationFieldStateWidget extends State<InformationFieldWidget> {
       constraints: BoxConstraints(
         minHeight: 5.0,
         minWidth: width,
-        maxHeight: 500,
+        maxHeight: 600,
         maxWidth: width,
       ),
       child: Column(

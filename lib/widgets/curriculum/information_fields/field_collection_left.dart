@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:matheus_blanco_online_cv/widgets/curriculum/information_fields/widgets/about_me_info.dart';
 import 'package:matheus_blanco_online_cv/widgets/curriculum/information_fields/widgets/information_fields_widget.dart';
+import 'package:matheus_blanco_online_cv/widgets/curriculum/information_fields/widgets/languages.dart';
+import 'package:matheus_blanco_online_cv/widgets/curriculum/information_fields/widgets/my_skills.dart';
 
 class FieldCollectionLeft extends StatefulWidget {
   const FieldCollectionLeft({super.key});
@@ -24,8 +26,16 @@ class _FieldCollectionLeftState extends State<FieldCollectionLeft> {
               title: 'Sobre mim',
               child: AboutMeInfo(),
             ),
-            InformationFieldWidget(position: position, title: 'Skills'),
-            InformationFieldWidget(position: position, title: 'Línguas'),
+            InformationFieldWidget(
+              position: position,
+              title: 'Skills',
+              child: MySkillsWidget(),
+            ),
+            InformationFieldWidget(
+              position: position,
+              title: 'Línguas',
+              child: LanguagesWidget(),
+            ),
           ],
         ),
       ),

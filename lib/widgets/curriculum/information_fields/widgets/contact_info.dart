@@ -118,28 +118,31 @@ class ContactWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        FloatingActionButton(
-          backgroundColor: backgroundColor,
-          foregroundColor: foregroundColor,
-          shape: const CircleBorder(),
-          onPressed: () {
-            method();
-          },
-          child: icon,
-        ),
-        const SizedBox(
-          width: 20,
-        ),
-        Text(
-          contact,
-          style: const TextStyle(
-            fontSize: 22,
-            color: Colors.grey,
+    return SizedBox(
+      child: Row(
+        children: [
+          FloatingActionButton(
+            backgroundColor: backgroundColor,
+            foregroundColor: foregroundColor,
+            shape: const CircleBorder(),
+            onPressed: () {
+              method();
+            },
+            child: icon,
           ),
-        )
-      ],
+          const SizedBox(
+            width: 20,
+          ),
+          Text(
+            contact,
+            style: const TextStyle(
+              fontSize: 22,
+              color: Colors.grey,
+            ),
+            overflow: TextOverflow.ellipsis,
+          )
+        ],
+      ),
     );
   }
 }
