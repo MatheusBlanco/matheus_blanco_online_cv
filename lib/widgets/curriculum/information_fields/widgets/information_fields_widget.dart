@@ -28,42 +28,45 @@ class InformationFieldStateWidget extends State<InformationFieldWidget> {
       constraints: BoxConstraints(
         minHeight: 5.0,
         minWidth: width,
-        maxHeight: 600,
+        maxHeight: double.infinity,
         maxWidth: width,
       ),
-      child: Column(
-        children: [
-          Container(
-            height: 60,
-            width: width,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(200),
-              color: Colors.yellow,
+      child: Container(
+        margin: const EdgeInsets.only(bottom: 50),
+        child: Column(
+          children: [
+            Container(
+              height: 60,
+              width: width,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(200),
+                color: Colors.yellow,
+              ),
+              child: Stack(
+                children: [
+                  position == 'left'
+                      ? Positioned(
+                          right: 0,
+                          child: DarkerContainer(
+                            width: width,
+                            position: position,
+                            title: widget.title,
+                          ),
+                        )
+                      : Positioned(
+                          left: 0,
+                          child: DarkerContainer(
+                            width: width,
+                            position: position,
+                            title: widget.title,
+                          ),
+                        )
+                ],
+              ),
             ),
-            child: Stack(
-              children: [
-                position == 'left'
-                    ? Positioned(
-                        right: 0,
-                        child: DarkerContainer(
-                          width: width,
-                          position: position,
-                          title: widget.title,
-                        ),
-                      )
-                    : Positioned(
-                        left: 0,
-                        child: DarkerContainer(
-                          width: width,
-                          position: position,
-                          title: widget.title,
-                        ),
-                      )
-              ],
-            ),
-          ),
-          widget.child,
-        ],
+            widget.child,
+          ],
+        ),
       ),
     );
   }
