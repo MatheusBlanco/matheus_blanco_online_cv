@@ -1,4 +1,4 @@
-import { Button, IconButton } from "@/components/Styles/Buttons";
+import { Button } from "@/components/Styles/Buttons";
 import styles from "@/styles/Home.module.css";
 import { GlobalStyles } from "@/styles/globalStyle";
 import { darkTheme, lightTheme } from "@/styles/theme";
@@ -6,7 +6,6 @@ import { Inter } from "next/font/google";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { parseCookies, setCookie } from "nookies";
-import { BsList } from "react-icons/bs";
 import { ThemeProvider } from "styled-components";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -34,13 +33,6 @@ export default function Home() {
         <ThemeProvider theme={theme === "light" ? lightTheme : darkTheme}>
           <GlobalStyles />
           <Button onClick={themeToggler}>Switch Theme</Button>{" "}
-          <Button>Xanadu</Button>
-          <IconButton>
-            <BsList />
-          </IconButton>
-          <IconButton size="lg" onClick={themeToggler}>
-            <BsList />
-          </IconButton>
         </ThemeProvider>
       </main>
     </>
