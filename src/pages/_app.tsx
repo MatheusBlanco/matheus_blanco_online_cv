@@ -1,12 +1,13 @@
 import "@/styles/globals.css";
-import { theme } from "@/styles/theme";
 import type { AppProps } from "next/app";
-import { ThemeProvider } from "styled-components";
+import { Inter } from "next/font/google";
+
+const inter = Inter({ subsets: ["latin"] });
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <ThemeProvider theme={theme}>
+    <main className={inter.className}>
       <Component {...pageProps} />
-    </ThemeProvider>
+    </main>
   );
 }
