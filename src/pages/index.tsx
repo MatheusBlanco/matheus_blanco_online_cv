@@ -1,25 +1,16 @@
-import { Button } from "@/components/Styles/Buttons";
+import { Navbar } from "@/components/Navbar";
 import styles from "@/styles/Home.module.css";
 import { GlobalStyles } from "@/styles/globalStyle";
 import { darkTheme, lightTheme } from "@/styles/theme";
 import { Inter } from "next/font/google";
 import Head from "next/head";
-import { useRouter } from "next/router";
-import { parseCookies, setCookie } from "nookies";
+import { parseCookies } from "nookies";
 import { ThemeProvider } from "styled-components";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
   const { theme } = parseCookies();
-  const router = useRouter();
-
-  const themeToggler = () => {
-    setCookie(null, "theme", theme === "light" ? "dark" : "light", {
-      path: "/",
-    });
-    router.replace("/");
-  };
 
   return (
     <>
@@ -32,7 +23,7 @@ export default function Home() {
       <main className={`${styles.main} ${inter.className}`}>
         <ThemeProvider theme={theme === "light" ? lightTheme : darkTheme}>
           <GlobalStyles />
-          <Button onClick={themeToggler}>Switch Theme</Button>{" "}
+          <Navbar />
         </ThemeProvider>
       </main>
     </>

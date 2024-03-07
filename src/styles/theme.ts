@@ -3,6 +3,7 @@ export const defaultThemeVars = {
     maxTabletWidth: "1024px",
     maxMobileWidth: "430px",
   },
+  transition: "all 0.50s linear",
 };
 
 export const lightTheme = {

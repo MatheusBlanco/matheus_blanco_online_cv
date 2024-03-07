@@ -8,7 +8,8 @@ export const Button = styled.button`
   line-height: 24px;
   padding: 6px 16px;
   border-radius: 12px;
-  transition: all 0.2s;
+  transition: ${({ theme }) => theme.transition};
+  cursor: pointer;
 
   &:hover {
     background: ${({ theme }) => theme.colors.gray["700"]};
