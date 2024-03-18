@@ -1,13 +1,13 @@
-import { Navbar } from "@/components/Navbar";
-import styles from "@/styles/Home.module.css";
-import { GlobalStyles } from "@/styles/globalStyle";
-import { darkTheme, lightTheme } from "@/styles/theme";
-import { Inter } from "next/font/google";
-import Head from "next/head";
-import { parseCookies } from "nookies";
-import { ThemeProvider } from "styled-components";
+import { Navbar } from '@/components/Navbar';
+import styles from '@/styles/Home.module.css';
+import { GlobalStyles } from '@/styles/globalStyle';
+import { darkTheme, lightTheme } from '@/styles/theme';
+import { Inter } from 'next/font/google';
+import Head from 'next/head';
+import { parseCookies } from 'nookies';
+import { ThemeProvider } from 'styled-components';
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({ subsets: ['latin'] });
 
 export default function Home() {
   const { theme } = parseCookies();
@@ -21,7 +21,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={`${styles.main} ${inter.className}`}>
-        <ThemeProvider theme={theme === "light" ? lightTheme : darkTheme}>
+        <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
           <GlobalStyles />
           <Navbar />
         </ThemeProvider>

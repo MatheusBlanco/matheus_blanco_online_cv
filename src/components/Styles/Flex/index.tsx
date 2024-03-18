@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 interface Props extends React.HTMLAttributes<HTMLDivElement> {
   justify?: string;
@@ -12,11 +12,11 @@ interface Props extends React.HTMLAttributes<HTMLDivElement> {
 
 export const Flex = styled.div<Props>`
   display: flex;
-  flex-direction: ${({ direction }) => direction || "row"};
-  align-items: ${({ align }) => align || "start"};
-  justify-content: ${({ justify }) => justify || "flex-start"};
-  gap: ${({ gap }) => gap || "inherit"};
-  width: ${({ width }) => width || "max-content"};
-  height: ${({ height }) => height || "100%"};
-  align-self: ${({ alignSelf }) => alignSelf || "start"};
+  flex-direction: ${({ direction }) => direction || 'row'};
+  align-items: ${({ align }) => align || 'start'};
+  justify-content: ${({ justify }) => justify || 'flex-start'};
+  gap: ${({ gap }) => gap || 'inherit'};
+  width: ${({ width }) => width || 'max-content'};
+  height: ${({ height }) => height || '100%'};
+  align-self: ${({ alignSelf }) => alignSelf || 'start'};
 `;

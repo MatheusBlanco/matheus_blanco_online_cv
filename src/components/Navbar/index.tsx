@@ -1,32 +1,34 @@
-import { useWindowSize } from "@/hooks/useWindowSize";
-import { useRouter } from "next/router";
-import { parseCookies, setCookie } from "nookies";
-import { FiMoon, FiSun } from "react-icons/fi";
-import { RxHamburgerMenu } from "react-icons/rx";
-import styled from "styled-components";
-import { Button } from "../Styles/Buttons";
-import { Flex } from "../Styles/Flex";
-import { IconButton } from "../Styles/Icons";
-import { MenuLink } from "../Styles/Link";
-import { Heading3 } from "../Styles/Text";
+import { useWindowSize } from '@/hooks/useWindowSize';
+import { useRouter } from 'next/router';
+import { parseCookies, setCookie } from 'nookies';
+import { FiMoon, FiSun } from 'react-icons/fi';
+import { RxHamburgerMenu } from 'react-icons/rx';
+import styled from 'styled-components';
+import { Button } from '../Styles/Buttons';
+import { Flex } from '../Styles/Flex';
+import { IconButton } from '../Styles/Icons';
+import { MenuLink } from '../Styles/Link';
+import { Heading3 } from '../Styles/Text';
 
-export const Navbar = () => {
+export function Navbar() {
   const { theme } = parseCookies();
   const router = useRouter();
   const [width] = useWindowSize();
   console.log(width);
 
   const themeToggler = () => {
-    setCookie(null, "theme", theme === "light" ? "dark" : "light", {
-      path: "/",
+    setCookie(null, 'theme', theme === 'light' ? 'dark' : 'light', {
+      path: '/',
     });
-    router.replace("/");
+    router.replace('/');
   };
+
+  console.log('aaa');
 
   return (
     <NavBarContainer>
       <Flex justify="space-between" width="100%">
-        <Heading3>&#60;SS &#47;&gt;</Heading3>{" "}
+        <Heading3>&#60;SS &#47;&gt;</Heading3>{' '}
         {width >= 834 ? (
           <Flex gap="24px" align="center">
             <MenuLink href="#">About</MenuLink>
@@ -35,7 +37,7 @@ export const Navbar = () => {
             <MenuLink href="#">Contact</MenuLink>
             <Flex gap="16px" align="center">
               <IconButton hiddenButton onClick={themeToggler}>
-                {theme && theme === "dark" ? <FiSun /> : <FiMoon />}
+                {theme && theme === 'dark' ? <FiSun /> : <FiMoon />}
               </IconButton>
               <Button>Download CV</Button>
             </Flex>
@@ -48,7 +50,7 @@ export const Navbar = () => {
       </Flex>
     </NavBarContainer>
   );
-};
+}
 
 const NavBarContainer = styled(Flex)`
   background: ${({ theme }) => theme.colors.gray.default};

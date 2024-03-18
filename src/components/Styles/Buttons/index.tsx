@@ -1,9 +1,9 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const Button = styled.button`
-  background: ${({ theme }) => theme.colors.gray["900"]};
+  background: ${({ theme }) => theme.colors.gray['900']};
   border: none;
-  color: ${({ theme }) => theme.colors.gray["50"]};
+  color: ${({ theme }) => theme.colors.gray['50']};
   font-size: 16px;
   line-height: 24px;
   padding: 6px 16px;
@@ -12,10 +12,10 @@ export const Button = styled.button`
   cursor: pointer;
 
   &:hover {
-    background: ${({ theme }) => theme.colors.gray["700"]};
+    background: ${({ theme }) => theme.colors.gray['700']};
   }
 
   &:active {
-    background: ${({ theme }) => theme.colors.gray["800"]};
+    background: ${({ theme }) => theme.colors.gray['800']};
   }
 `;

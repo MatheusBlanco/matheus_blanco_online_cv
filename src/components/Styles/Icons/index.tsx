@@ -1,5 +1,5 @@
-import { IconContext } from "react-icons";
-import styled from "styled-components";
+import { IconContext } from 'react-icons';
+import styled from 'styled-components';
 
 interface ProviderProps {
   className?: string;
@@ -25,27 +25,27 @@ const IconButtonProvider = ({
 );
 
 export const IconButton = styled(IconButtonProvider)<{
-  size?: "md" | "lg";
+  size?: 'md' | 'lg';
   hiddenButton?: boolean;
 }>`
-  width: ${({ size }) => (size ? (size === "md" ? "36px" : "44px") : "36px")};
-  height: ${({ size }) => (size ? (size === "md" ? "36px" : "44px") : "36px")};
+  width: ${({ size }) => (size ? (size === 'md' ? '36px' : '44px') : '36px')};
+  height: ${({ size }) => (size ? (size === 'md' ? '36px' : '44px') : '36px')};
   background: ${({ theme, hiddenButton }) =>
-    !hiddenButton && theme.colors.gray["100"]};
+    !hiddenButton && theme.colors.gray['100']};
   transition: ${({ theme }) => theme.transition};
   border-radius: 8px;
   padding: 6px;
   cursor: pointer;
-  color: ${({ theme }) => theme.colors.gray["600"]};
+  color: ${({ theme }) => theme.colors.gray['600']};
 
   &:hover {
     background: ${({ theme, hiddenButton }) =>
-      !hiddenButton && theme.colors.gray["300"]};
+      !hiddenButton && theme.colors.gray['300']};
   }
 
   &:active {
     background: ${({ theme, hiddenButton }) =>
-      !hiddenButton && theme.colors.gray["200"]};
+      !hiddenButton && theme.colors.gray['200']};
   }
 `;
 
@@ -54,9 +54,9 @@ const IconProvider = ({ className, children }: ProviderProps) => (
 );
 
 export const Icon = styled(IconProvider)<{
-  size?: "md" | "lg";
+  size?: 'md' | 'lg';
 }>`
-  width: ${({ size }) => (size ? (size === "md" ? "24px" : "32px") : "24px")};
-  height: ${({ size }) => (size ? (size === "md" ? "24px" : "32px") : "24px")};
-  color: ${({ theme }) => theme.colors.gray["600"]};
+  width: ${({ size }) => (size ? (size === 'md' ? '24px' : '32px') : '24px')};
+  height: ${({ size }) => (size ? (size === 'md' ? '24px' : '32px') : '24px')};
+  color: ${({ theme }) => theme.colors.gray['600']};
 `;
