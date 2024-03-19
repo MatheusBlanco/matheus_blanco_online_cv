@@ -1,88 +1,60 @@
+import { useScrollOffset } from '@/hooks/useScrollOffset';
+import { useThemeMode } from '@/hooks/useThemeMode';
 import { useWindowSize } from '@/hooks/useWindowSize';
-import { useRouter } from 'next/router';
-import { parseCookies, setCookie } from 'nookies';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { FiMoon, FiSun } from 'react-icons/fi';
 import { RxHamburgerMenu } from 'react-icons/rx';
-import styled from 'styled-components';
+import Drawer from '../Drawer';
 import { Button } from '../Styles/Buttons';
 import { Flex } from '../Styles/Flex';
+import { Heading } from '../Styles/Heading';
 import { IconButton } from '../Styles/Icons';
 import { MenuLink } from '../Styles/Link';
-import { Heading3 } from '../Styles/Text';
+import { NavBarContainer } from './styles';
 
 export function Navbar() {
-  const { theme } = parseCookies();
-  const router = useRouter();
+  const { theme, themeToggler } = useThemeMode();
   const [width] = useWindowSize();
-  const [offset, setOffset] = useState(0);
-  const [isUpper, setIsUpper] = useState(true);
+  const { isUpper } = useScrollOffset();
+  const [isOpened, setOpened] = useState(false);
+  const toggleDrawer = () => {
+    setOpened(prev => !prev);
+  };
 
-  const handleScroll = () => setOffset(window.pageYOffset);
-
-  useEffect(() => {
-    window.addEventListener('scroll', handleScroll);
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
-
-  useEffect(() => {
-    if (offset > 100) {
-      setIsUpper(false);
-    } else {
-      setIsUpper(true);
-    }
-  }, [offset]);
-
-  const themeToggler = () => {
-    setCookie(null, 'theme', theme === 'light' ? 'dark' : 'light', {
-      path: '/',
-    });
-    router.replace('/');
+  const closeDrawer = () => {
+    setOpened(false);
   };
 
   return (
     <NavBarContainer className={isUpper ? 'active' : ''}>
       <Flex justify="space-between" width="100%">
-        <Heading3>&#60;SS &#47;&gt;</Heading3>{' '}
-        {width >= 834 ? (
-          <Flex gap="24px" align="center">
-            <MenuLink href="#">About</MenuLink>
-            <MenuLink href="#">Work</MenuLink>
-            <MenuLink href="#">Testimonials</MenuLink>
-            <MenuLink href="#">Contact</MenuLink>
-            <Flex gap="16px" align="center">
-              <IconButton hiddenButton onClick={themeToggler}>
-                {theme && theme === 'dark' ? <FiSun /> : <FiMoon />}
-              </IconButton>
-              <Button>Download CV</Button>
-            </Flex>
-          </Flex>
-        ) : (
-          <IconButton hiddenButton>
-            <RxHamburgerMenu />
-          </IconButton>
-        )}
+        {!isOpened ? (
+          <>
+            <Heading />
+            {width >= 834 ? (
+              <Flex gap="24px" align="center">
+                <MenuLink href="#">About</MenuLink>
+                <MenuLink href="#">Work</MenuLink>
+                <MenuLink href="#">Testimonials</MenuLink>
+                <MenuLink href="#">Contact</MenuLink>
+                <Flex gap="16px" align="center">
+                  <IconButton hiddenButton onClick={themeToggler}>
+                    {theme && theme === 'dark' ? <FiSun /> : <FiMoon />}
+                  </IconButton>
+                  <Button>Download CV</Button>
+                </Flex>
+              </Flex>
+            ) : (
+              <>
+                <IconButton hiddenButton onClick={toggleDrawer}>
+                  <RxHamburgerMenu />
+                </IconButton>
+              </>
+            )}
+          </>
+        ) : null}
       </Flex>
+      <Drawer isOpened={isOpened} closeDrawer={closeDrawer} />
     </NavBarContainer>
   );
 }
-
-const NavBarContainer = styled(Flex)`
-  background: ${({ theme }) => theme.colors.gray['100']};
-  width: 100vw;
-  position: fixed;
-  max-height: 68px;
-  top: 0;
-  left: 0;
-  padding: 16px 80px;
-  transition: ${({ theme }) => theme.transition};
-  @media (max-width: ${({ theme }) => theme.screenSizes.maxMobileWidth}) {
-    padding: 16px;
-  }
-
-  &.active {
-    background-color: transparent;
-  }
-`;
