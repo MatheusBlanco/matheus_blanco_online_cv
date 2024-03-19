@@ -1,6 +1,7 @@
 import { useWindowSize } from '@/hooks/useWindowSize';
 import { useRouter } from 'next/router';
 import { parseCookies, setCookie } from 'nookies';
+import { useEffect, useState } from 'react';
 import { FiMoon, FiSun } from 'react-icons/fi';
 import { RxHamburgerMenu } from 'react-icons/rx';
 import styled from 'styled-components';
@@ -14,7 +15,25 @@ export function Navbar() {
   const { theme } = parseCookies();
   const router = useRouter();
   const [width] = useWindowSize();
-  console.log(width);
+  const [offset, setOffset] = useState(0);
+  const [isUpper, setIsUpper] = useState(true);
+
+  const handleScroll = () => setOffset(window.pageYOffset);
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (offset > 100) {
+      setIsUpper(false);
+    } else {
+      setIsUpper(true);
+    }
+  }, [offset]);
 
   const themeToggler = () => {
     setCookie(null, 'theme', theme === 'light' ? 'dark' : 'light', {
@@ -23,10 +42,8 @@ export function Navbar() {
     router.replace('/');
   };
 
-  console.log('aaa');
-
   return (
-    <NavBarContainer>
+    <NavBarContainer className={isUpper ? 'active' : ''}>
       <Flex justify="space-between" width="100%">
         <Heading3>&#60;SS &#47;&gt;</Heading3>{' '}
         {width >= 834 ? (
@@ -53,7 +70,7 @@ export function Navbar() {
 }
 
 const NavBarContainer = styled(Flex)`
-  background: ${({ theme }) => theme.colors.gray.default};
+  background: ${({ theme }) => theme.colors.gray['100']};
   width: 100vw;
   position: fixed;
   max-height: 68px;
@@ -63,5 +80,9 @@ const NavBarContainer = styled(Flex)`
   transition: ${({ theme }) => theme.transition};
   @media (max-width: ${({ theme }) => theme.screenSizes.maxMobileWidth}) {
     padding: 16px;
+  }
+
+  &.active {
+    background-color: transparent;
   }
 `;

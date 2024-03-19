@@ -1,3 +1,5 @@
+'use client';
+
 import { Navbar } from '@/components/Navbar';
 import styles from '@/styles/Home.module.css';
 import { GlobalStyles } from '@/styles/globalStyle';
@@ -6,6 +8,7 @@ import { Inter } from 'next/font/google';
 import Head from 'next/head';
 import { parseCookies } from 'nookies';
 import { ThemeProvider } from 'styled-components';
+import StyledComponentsRegistry from '../lib/registry';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -21,10 +24,12 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={`${styles.main} ${inter.className}`}>
-        <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
-          <GlobalStyles />
-          <Navbar />
-        </ThemeProvider>
+        <StyledComponentsRegistry>
+          <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
+            <GlobalStyles />
+            <Navbar />
+          </ThemeProvider>
+        </StyledComponentsRegistry>
       </main>
     </>
   );

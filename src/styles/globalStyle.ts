@@ -4,6 +4,6 @@ export const GlobalStyles = createGlobalStyle`
     background: ${({ theme }) => theme.colors.gray.default};
     color: ${({ theme }) => theme.text};
     font-family: Inter, Tahoma, Helvetica, Arial, Roboto, sans-serif;
-    transition: ${({ theme }) => theme.transition};
+    transition: ${({ theme }) => theme.transition};height: 90000px;
   }
   `;
